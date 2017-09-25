@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+
+<tiles-definitions>  
+ 
+   <!-- Base Definition -->
+   <definition name="base-definition" 
+       template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultMenu.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
+   </definition>
+
+
+    <!-- ojs Definition -->
+    <definition name="ojs-definition"
+                template="/WEB-INF/views/tiles/layouts/ojsLayout.jsp">
+        <put-attribute name="title" value="" />
+
+        <put-attribute name="custom" value="" />
+
+    </definition>
+
+
+    <!-- Home Page -->
+   <definition name="home" extends="base-definition">  
+       <put-attribute name="title" value="Welcome" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />  
+   </definition>  
+
+   <!-- Product Page -->
+   <definition name="products" extends="base-definition">  
+       <put-attribute name="title" value="Products" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/products.jsp" />  
+   </definition>  
+      
+   <!-- Contact-us Page -->
+   <definition name="contactus" extends="base-definition">  
+       <put-attribute name="title" value="Contact Us" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/contactus.jsp" />  
+   </definition>
+
+    <!-- Submit Code Page -->
+    <definition name="submitCode" extends="ojs-definition">
+        <put-attribute name="title" value="Submit Code" />
+        <put-attribute name="custom" value="/WEB-INF/views/pages/submitCode.jsp" />
+    </definition>
+
+    <!-- register Page -->
+    <definition name="register" extends="ojs-definition">
+        <put-attribute name="title" value="Register" />
+        <put-attribute name="custom" value="/WEB-INF/views/pages/register.jsp" />
+    </definition>
+
+    <!-- register Page -->
+    <definition name="login" extends="ojs-definition">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="custom" value="/WEB-INF/views/pages/login.jsp" />
+    </definition>
+
+
+
+    <!-- 403 Page -->
+    <definition name="403" extends="ojs-definition">
+        <put-attribute name="title" value="403" />
+        <put-attribute name="custom" value="/WEB-INF/views/pages/403.jsp" />
+    </definition>
+
+
+
+    <!-- problems Page -->
+    <definition name="problems" extends="ojs-definition">
+        <put-attribute name="title" value="Problems" />
+        <put-attribute name="custom" value="/WEB-INF/views/pages/problems.jsp" />
+    </definition>
+
+
+    <!-- submissions Page -->
+    <definition name="viewSubmissions" extends="ojs-definition">
+        <put-attribute name="title" value="view Submissions" />
+        <put-attribute name="custom" value="/WEB-INF/views/pages/viewSubmissions.jsp" />
+    </definition>
+
+    <!-- Home Page -->
+    <definition name="index" extends="ojs-definition">
+        <put-attribute name="title" value="index" />
+        <put-attribute name="custom" value="/WEB-INF/views/pages/index.jsp" />
+    </definition>
+
+
+
+
+</tiles-definitions>
