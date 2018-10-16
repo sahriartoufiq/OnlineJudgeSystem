@@ -26,12 +26,12 @@
 
     <div class="form-group">
         <label for="memoryLimit">MemoryLimit:</label>
-        <input type="text" class="form-control" id="memoryLimit"  name="memoryLimit"/>
+        <input type="text" class="form-control" id="memoryLimit" name="memoryLimit"/>
     </div>
     <div class="form-group">
         <label for="category">Category:</label>
         <input type="text" class="form-control" id="category" name="category">
     </div>
 
-    <input type="submit" class="btn btn-default" value="Upload" />
+    <input type="submit" class="btn btn-default" value="Upload"/>
 </form>

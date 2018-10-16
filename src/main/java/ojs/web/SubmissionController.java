@@ -26,16 +26,16 @@ import java.io.IOException;
 
 @Controller
 public class SubmissionController {
+
     private static final Logger log = Logger.getLogger(SubmissionController.class);
-    @Autowired
+
     Submission submission;
-    @Autowired
     UserRepository userRepository;
-    @Autowired
     JudgeService judgeService;
 
     @Autowired
     public SubmissionController(Submission submission, JudgeService judgeService, UserRepository userRepository) {
+
         this.submission = submission;
         this.judgeService = judgeService;
         this.userRepository = userRepository;
@@ -44,38 +44,49 @@ public class SubmissionController {
 
     @RequestMapping(value = "/submitCode", method = RequestMethod.GET)
     public String submit(Model model) {
+
         Submissions submissions = new Submissions();
         model.addAttribute(submissions);
         return "submitCode";
+
     }
 
     @RequestMapping(value = "/submitCode", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("submissions") Submissions submissions,
-                         BindingResult result, ModelMap model) {
-        log.debug("..........." + submissions.getLanguage());
-        //log.debug("......"+submissions.getProblems().getId());
+                         BindingResult result,
+                         ModelMap model) {
+
         submissions.setUsers(userRepository.findByUserName(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString()));
         int subId = submission.save(submissions);
 
         submissions.setId(subId);
         MultipartFile code = submissions.getCodeFile();
-       // String dest = "/home/sahriar/Desktop/ojs/" + subId + ".c";
         String dest = "../Desktop/" + subId + ".c";
+
         try {
+
             code.transferTo(new File(dest));
+
         } catch (IOException e) {
+
             log.debug("....." + e);
+
         }
 
         submissions.setJudgeResult(judgeService.judgeSubmissions(submissions));
         submission.update(submissions);
+
         return "submitCode";
+
     }
 
     @RequestMapping(value = "/viewSubmissions", method = RequestMethod.GET)
     public String viewSubmissions(Model model) {
+
         model.addAttribute("sub", submission.getSubmissions());
+
         return "viewSubmissions";
+
     }
 
 }

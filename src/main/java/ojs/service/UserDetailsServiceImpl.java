@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Created by toufiq on 12/12/16.
  */
-@Service("ojsuserDetailsService")
+@Service("ojsUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired

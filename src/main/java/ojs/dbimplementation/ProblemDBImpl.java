@@ -23,14 +23,16 @@ public class ProblemDBImpl implements ProblemsDB {
 
     @Override
     public int save(Problems problems) {
+
         Session session = this.sessionFactory.openSession();
-        //JOptionPane.showMessageDialog(null, "before");
-        //JOptionPane.showMessageDialog(null, session.toString());
         Transaction tx = session.beginTransaction();
         int id = (int) session.save(problems);
+
         tx.commit();
         session.close();
-        //session.close();
+
         return id;
+
     }
+
 }

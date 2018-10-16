@@ -3,9 +3,6 @@ package ojs.domain.db;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 
@@ -22,7 +19,7 @@ public class Users {
     private int id;
     @Column(name = "first_name")
     private String firstName;
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "user_name")
@@ -33,29 +30,20 @@ public class Users {
     @Column(name = "password")
     private String password;
     @Column(name = "active")
-    private String active ;
+    private String active;
     @Column(name = "score")
     private double score;
     @Column(name = "phone")
     private String phone;
 
 
-    @OneToMany(mappedBy = "users",cascade =CascadeType.ALL)
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
     private Set<UserRoles> userRolesSet;
     @OneToMany(mappedBy = "users")
     private Set<Problems> problemsSet;
 
-    @OneToMany(fetch=FetchType.LAZY,mappedBy = "users")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
     private Set<Submissions> submissionsSet;
-
-
-  //  @OneToMany(fetch=FetchType.EAGER,mappedBy="users")
-//  @OneToMany(orphanRemoval=true)
-//  @JoinColumn(name="USER_ID")
-//    public Set<UserRoles> getUserRole() {
-//        return userRole;
-//    }
-
 
     public Set<UserRoles> getUserRolesSet() {
         return userRolesSet;

@@ -8,20 +8,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "t_user_roles")
 public class UserRoles {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-  //  @ManyToOne(fetch = FetchType.EAGER)
-  //  @JoinColumn(name = "user_name", nullable = false)
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "users_id")
     private Users users;
     @Column(name = "user_roles")
     private String userRoles;
-
-
 
     public int getId() {
         return id;
@@ -46,4 +43,5 @@ public class UserRoles {
     public void setUserRoles(String userRoles) {
         this.userRoles = userRoles;
     }
+
 }

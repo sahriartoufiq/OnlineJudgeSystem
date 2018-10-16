@@ -1,7 +1,6 @@
 package ojs.config;
 
-import java.util.regex.Pattern;
-
+import ojs.config.RootConfig.WebPackage;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +8,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.type.filter.RegexPatternTypeFilter;
 
-import ojs.config.RootConfig.WebPackage;
+import java.util.regex.Pattern;
 
 @Configuration
 @Import(DataConfig.class)
@@ -19,9 +18,13 @@ import ojs.config.RootConfig.WebPackage;
         })
 
 public class RootConfig {
+
     public static class WebPackage extends RegexPatternTypeFilter {
+
         public WebPackage() {
             super(Pattern.compile("ojs.web"));
         }
+
     }
+
 }
